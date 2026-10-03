@@ -1,0 +1,20 @@
+id,Rank,Name,OVR,PAC,SHO,PAS,DRI,DEF,PHY,Position,Weak foot,Skill moves,Preferred foot,Height,Weight,Alternative positions,Age,Nation,League,Team,play style,url,GK Diving,GK Handling,GK Kicking,GK Positioning,GK Reflexes
+
+quiero un diagrama en formato plantuml de una base de datos relacional normalizada en su tercera forma normal. la base de datos tendrá la siguiente convención:
++ los nombres de las tablas y atributos estarán en ingles
++ los nombres de las tablas estarán el plural
++ las llaves primarias se llmaran id y serán de tipo INT
++ las llaves foráneas se llamaran como la tabla a la que hacen referencia pero en singular + _id (ejemplo tabla: players , foreanea a players seria player_id)
++ las entidades asociativas que se llamen juntando las tablas que la generan con un _ ejemplo: asociativa de players y positions se llamaria players_positions
+
+considera que las cardnialidad de positions con players es de uno a muchos, Alternative positions es de muchos a muchos con players y tambien play style
+
+considera en la cabecera del plantuml lo siguiente
+
+top to bottom direction
+
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam ranksep 120
+skinparam nodesep 80

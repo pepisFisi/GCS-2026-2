@@ -1,0 +1,115 @@
+@startuml
+
+top to bottom direction
+
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam ranksep 120
+skinparam nodesep 80
+
+entity players {
+    * id : INT
+    --
+    ranking : INT
+    name : VARCHAR(40)
+    ovr : INT
+    pac : INT
+    sho : INT
+    pas : INT
+    dri : INT
+    def : INT
+    phy : INT
+    weak_foot : INT
+    skill_moves : INT
+    height : INT
+    weight : INT
+    age : INT
+    url : VARCHAR(200)
+    position_id : INT <<FK>>
+    nation_id : INT <<FK>>
+    team_id : INT <<FK>>
+    foot_id : INT <<FK>>
+}
+
+entity positions {
+    * id : INT
+    --
+    name : VARCHAR(5)
+}
+
+entity nations {
+    * id : INT
+    --
+    name : VARCHAR(40)
+}
+
+entity leagues {
+    * id : INT
+    --
+    name : VARCHAR(40)
+    nation_id : INT <<FK>>
+}
+
+entity teams {
+    * id : INT
+    --
+    name : VARCHAR(40)
+    league_id : INT <<FK>>
+}
+
+entity play_styles {
+    * id : INT
+    --
+    name : VARCHAR(3)
+}
+
+entity foots {
+    * id : INT
+    --
+    name : VARCHAR(5)
+}
+
+entity players_positions {
+    * id : INT
+    --
+    player_id : INT <<FK>>
+    position_id : INT <<FK>>
+}
+
+entity players_play_styles {
+    * id : INT
+    --
+    player_id : INT <<FK>>
+    play_style_id : INT <<FK>>
+}
+
+entity goalkeepers {
+    * id : INT
+    --
+    player_id : INT <<FK>>
+    gk_diving : INT
+    gk_handling : INT
+    gk_kicking : INT
+    gk_positioning : INT
+    gk_reflexes : INT
+}
+
+positions ||--o{ players : "has"
+nations ||--o{ players : "has"
+leagues ||--o{ teams : "has"
+teams ||--o{ players : "has"
+
+players ||--o{ players_positions : "has"
+positions ||--o{ players_positions : "has"
+
+players ||--o{ players_play_styles : "has"
+play_styles ||--o{ players_play_styles : "has"
+
+players ||--o| goalkeepers : "has"
+
+nations ||--o{ leagues : "has"
+
+foots ||--o{ players : "has"
+
+@enduml
